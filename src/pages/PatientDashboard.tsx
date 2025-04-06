@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from "react";
 import {
   Search,
@@ -51,7 +50,6 @@ import {
 } from "@/components/ui/select";
 import { Label } from "@/components/ui/label";
 
-// Mock patient data
 const initialPatients = [
   {
     id: 1,
@@ -136,7 +134,6 @@ export default function PatientDashboard() {
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);
   const [isUploadDialogOpen, setIsUploadDialogOpen] = useState(false);
 
-  // Update patients' vitals every 3 seconds to simulate real-time data
   useEffect(() => {
     const interval = setInterval(() => {
       setPatients((prevPatients) =>
@@ -166,7 +163,6 @@ export default function PatientDashboard() {
     return () => clearInterval(interval);
   }, []);
 
-  // Filter patients based on search term and department filter
   useEffect(() => {
     let filtered = patients;
 
@@ -204,7 +200,6 @@ export default function PatientDashboard() {
 
   const handleSavePatient = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form data handling would go here
     setIsAddEditDialogOpen(false);
     toast.success(`Patient ${currentPatient ? "updated" : "added"} successfully`);
   };
@@ -220,7 +215,6 @@ export default function PatientDashboard() {
   };
 
   const handleUploadSave = () => {
-    // File upload handling would go here
     setIsUploadDialogOpen(false);
     toast.success("Medical reports uploaded successfully");
   };
@@ -410,7 +404,6 @@ export default function PatientDashboard() {
         </CardContent>
       </Card>
 
-      {/* Add/Edit Patient Dialog */}
       <Dialog
         open={isAddEditDialogOpen}
         onOpenChange={setIsAddEditDialogOpen}
@@ -453,7 +446,7 @@ export default function PatientDashboard() {
                 <Label htmlFor="gender" className="text-right">
                   Gender
                 </Label>
-                <Select defaultValue={currentPatient?.gender || ""}>
+                <Select defaultValue={currentPatient?.gender || "Male"}>
                   <SelectTrigger className="col-span-3">
                     <SelectValue placeholder="Select gender" />
                   </SelectTrigger>
@@ -468,7 +461,7 @@ export default function PatientDashboard() {
                 <Label htmlFor="department" className="text-right">
                   Department
                 </Label>
-                <Select defaultValue={currentPatient?.department || ""}>
+                <Select defaultValue={currentPatient?.department || "Cardiology"}>
                   <SelectTrigger className="col-span-3">
                     <SelectValue placeholder="Select department" />
                   </SelectTrigger>
@@ -489,7 +482,6 @@ export default function PatientDashboard() {
         </DialogContent>
       </Dialog>
 
-      {/* Delete Confirmation Dialog */}
       <Dialog open={isDeleteDialogOpen} onOpenChange={setIsDeleteDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>
@@ -516,7 +508,6 @@ export default function PatientDashboard() {
         </DialogContent>
       </Dialog>
 
-      {/* Upload Medical Reports Dialog */}
       <Dialog open={isUploadDialogOpen} onOpenChange={setIsUploadDialogOpen}>
         <DialogContent className="sm:max-w-[425px]">
           <DialogHeader>

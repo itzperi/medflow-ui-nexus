@@ -436,7 +436,7 @@ export default function ManagementDashboard() {
                 <Label htmlFor="role" className="text-right">
                   Role
                 </Label>
-                <Select defaultValue={currentStaff?.role || ""}>
+                <Select defaultValue={currentStaff?.role || "Doctor"}>
                   <SelectTrigger className="col-span-3">
                     <SelectValue placeholder="Select role" />
                   </SelectTrigger>
@@ -453,7 +453,7 @@ export default function ManagementDashboard() {
                 <Label htmlFor="department" className="text-right">
                   Department
                 </Label>
-                <Select defaultValue={currentStaff?.department || ""}>
+                <Select defaultValue={currentStaff?.department || "Cardiology"}>
                   <SelectTrigger className="col-span-3">
                     <SelectValue placeholder="Select department" />
                   </SelectTrigger>
@@ -472,7 +472,7 @@ export default function ManagementDashboard() {
                 <Label htmlFor="shift" className="text-right">
                   Shift
                 </Label>
-                <Select defaultValue={currentStaff?.shift || ""}>
+                <Select defaultValue={currentStaff?.shift || "Morning"}>
                   <SelectTrigger className="col-span-3">
                     <SelectValue placeholder="Select shift" />
                   </SelectTrigger>
