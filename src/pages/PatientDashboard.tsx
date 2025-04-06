@@ -178,7 +178,7 @@ export default function PatientDashboard() {
       );
     }
 
-    if (departmentFilter) {
+    if (departmentFilter && departmentFilter !== "all") {
       filtered = filtered.filter(
         (patient) => patient.department === departmentFilter
       );
@@ -306,7 +306,7 @@ export default function PatientDashboard() {
                   <SelectValue placeholder="Filter by department" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Departments</SelectItem>
+                  <SelectItem value="all">All Departments</SelectItem>
                   {departments.map((dept) => (
                     <SelectItem key={dept} value={dept}>
                       {dept}

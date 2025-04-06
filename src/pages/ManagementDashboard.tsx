@@ -143,11 +143,11 @@ export default function ManagementDashboard() {
       );
     }
 
-    if (roleFilter) {
+    if (roleFilter && roleFilter !== "all") {
       filtered = filtered.filter((person) => person.role === roleFilter);
     }
 
-    if (departmentFilter) {
+    if (departmentFilter && departmentFilter !== "all") {
       filtered = filtered.filter((person) => person.department === departmentFilter);
     }
 
@@ -277,7 +277,7 @@ export default function ManagementDashboard() {
                     <SelectValue placeholder="Role" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="">All Roles</SelectItem>
+                    <SelectItem value="all">All Roles</SelectItem>
                     {roles.map((role) => (
                       <SelectItem key={role} value={role}>
                         {role}
@@ -294,7 +294,7 @@ export default function ManagementDashboard() {
                   <SelectValue placeholder="Department" />
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="">All Departments</SelectItem>
+                  <SelectItem value="all">All Departments</SelectItem>
                   {departments.map((dept) => (
                     <SelectItem key={dept} value={dept}>
                       {dept}
