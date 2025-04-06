@@ -111,7 +111,7 @@ export function Sidebar({ className }: SidebarProps) {
             </nav>
           </div>
           
-          <div className="border-t border-border p-4 flex items-center justify-between">
+          <div className="border-t border-border p-4 flex items-center justify-center">
             <ThemeToggle />
           </div>
         </div>

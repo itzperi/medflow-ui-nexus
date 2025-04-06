@@ -92,6 +92,7 @@
 
   body {
     @apply bg-background text-foreground;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 }
 
@@ -113,5 +114,19 @@
   
   .animate-fade-in {
     animation: fade-in 0.5s ease-out forwards;
+  }
+  
+  .theme-transition {
+    transition: all 0.3s ease;
+  }
+
+  @keyframes wiggle {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-10deg); }
+    75% { transform: rotate(10deg); }
+  }
+
+  .animate-wiggle {
+    animation: wiggle 0.3s ease-in-out;
   }
 }
