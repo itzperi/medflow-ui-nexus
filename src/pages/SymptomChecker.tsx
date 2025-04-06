@@ -1,7 +1,7 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { Activity, Search, Loader2, BookMedical, Thermometer, Stethoscope } from "lucide-react";
+import { Activity, Search, Loader2, FileText, Thermometer, Stethoscope } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -210,7 +210,7 @@ export default function SymptomChecker() {
                 <Card key={index} className="overflow-hidden">
                   <div className="flex flex-col md:flex-row">
                     <div className="bg-healthcare-blue-DEFAULT/10 p-4 flex items-center justify-center md:w-16">
-                      <BookMedical className="h-6 w-6 text-healthcare-blue-DEFAULT" />
+                      <FileText className="h-6 w-6 text-healthcare-blue-DEFAULT" />
                     </div>
                     <div className="p-4 flex-1">
                       <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
