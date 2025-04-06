@@ -1,7 +1,16 @@
 
 import { useState } from "react";
 import { toast } from "sonner";
-import { Activity, Search, Loader2, FileText, Thermometer, Stethoscope } from "lucide-react";
+import { 
+  Activity, 
+  Search, 
+  Loader2, 
+  FileText, 
+  Thermometer, 
+  Stethoscope,
+  AlertTriangle,
+  Sparkles
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -13,6 +22,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { useIsMobile } from "@/hooks/use-mobile";
 
 // Mock data for symptom analysis
 const mockConditions = {
@@ -54,6 +64,7 @@ export default function SymptomChecker() {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [results, setResults] = useState<Condition[]>([]);
   const [hasSearched, setHasSearched] = useState(false);
+  const isMobile = useIsMobile();
 
   const handleSymptomAnalysis = () => {
     if (!symptoms.trim()) {
@@ -114,25 +125,37 @@ export default function SymptomChecker() {
   const getProbabilityColor = (probability: string) => {
     switch (probability) {
       case "High":
-        return "text-healthcare-red-DEFAULT border-healthcare-red-DEFAULT";
+        return "bg-healthcare-red-light/20 text-healthcare-red-DEFAULT border-healthcare-red-DEFAULT";
       case "Medium":
-        return "text-amber-500 border-amber-500";
+        return "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500";
       case "Low":
-        return "text-healthcare-blue-DEFAULT border-healthcare-blue-DEFAULT";
+        return "bg-healthcare-blue-light/20 text-healthcare-blue-DEFAULT border-healthcare-blue-DEFAULT";
       default:
-        return "text-muted-foreground border-muted-foreground";
+        return "bg-muted/20 text-muted-foreground border-muted-foreground";
     }
   };
 
+  const pulseAnimation = "animate-[pulse_2s_cubic-bezier(0.4,0,0.6,1)_infinite]";
+
   return (
-    <div className="max-w-3xl mx-auto space-y-8">
-      <div className="text-center space-y-2">
+    <div className="max-w-4xl mx-auto space-y-8 px-4 sm:px-6">
+      <div className="text-center space-y-4">
         <div className="flex justify-center">
-          <div className="bg-healthcare-blue-light/20 p-3 rounded-full">
-            <Activity className="h-8 w-8 text-healthcare-blue-DEFAULT" />
+          <div className="relative">
+            <div className={`bg-healthcare-blue-light/20 p-3 md:p-4 rounded-full ${!isAnalyzing ? pulseAnimation : ""}`}>
+              <Activity className="h-8 w-8 md:h-10 md:w-10 text-healthcare-blue-DEFAULT" />
+            </div>
+            {isAnalyzing && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="absolute inset-0 rounded-full bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm"></div>
+                <Loader2 className="h-8 w-8 md:h-10 md:w-10 animate-spin text-healthcare-blue-DEFAULT relative" />
+              </div>
+            )}
           </div>
         </div>
-        <h1 className="text-3xl font-bold">AI Symptom Checker</h1>
+        <h1 className="text-3xl md:text-4xl font-bold bg-gradient-to-r from-healthcare-blue-DEFAULT to-healthcare-teal-DEFAULT bg-clip-text text-transparent">
+          AI Symptom Checker
+        </h1>
         <p className="text-muted-foreground max-w-lg mx-auto">
           Enter your symptoms below, separated by commas, and our AI system will
           analyze potential conditions. This is not a substitute for professional
@@ -140,17 +163,21 @@ export default function SymptomChecker() {
         </p>
       </div>
 
-      <Card className="glass">
-        <CardHeader>
-          <CardTitle>Symptom Analysis</CardTitle>
+      <Card className="glass overflow-hidden border-healthcare-blue-DEFAULT/30 shadow-lg shadow-healthcare-blue-DEFAULT/10">
+        <CardHeader className="bg-gradient-to-r from-healthcare-blue-light/10 to-healthcare-teal-light/10 border-b border-healthcare-blue-DEFAULT/20">
+          <CardTitle className="flex items-center gap-2">
+            <Sparkles className="h-5 w-5 text-healthcare-teal-DEFAULT" />
+            Symptom Analysis
+          </CardTitle>
           <CardDescription>
             Describe your symptoms in detail for more accurate results
           </CardDescription>
         </CardHeader>
-        <CardContent>
+        <CardContent className="pt-6">
           <div className="grid gap-4">
             <div className="grid gap-2">
-              <label htmlFor="symptoms" className="text-sm font-medium">
+              <label htmlFor="symptoms" className="text-sm font-medium flex items-center gap-2">
+                <Stethoscope className="h-4 w-4 text-healthcare-blue-DEFAULT" />
                 Symptoms
               </label>
               <div className="relative">
@@ -158,20 +185,20 @@ export default function SymptomChecker() {
                 <Input
                   id="symptoms"
                   placeholder="e.g., fever, headache, fatigue"
-                  className="pl-8"
+                  className="pl-8 transition-all border-healthcare-blue-DEFAULT/30 focus-visible:ring-healthcare-blue-DEFAULT/30"
                   value={symptoms}
                   onChange={(e) => setSymptoms(e.target.value)}
                 />
               </div>
-              <p className="text-xs text-muted-foreground">
+              <p className="text-xs text-muted-foreground italic">
                 Separate multiple symptoms with commas
               </p>
             </div>
           </div>
         </CardContent>
-        <CardFooter>
+        <CardFooter className="flex flex-col sm:flex-row gap-3 bg-gradient-to-r from-healthcare-blue-light/5 to-healthcare-teal-light/5 border-t border-healthcare-blue-DEFAULT/20">
           <Button 
-            className="w-full" 
+            className="w-full bg-gradient-to-r from-healthcare-blue-DEFAULT to-healthcare-teal-DEFAULT hover:from-healthcare-blue-dark hover:to-healthcare-teal-dark transition-all duration-300 shadow-md hover:shadow-lg" 
             onClick={handleSymptomAnalysis}
             disabled={isAnalyzing}
           >
@@ -191,29 +218,38 @@ export default function SymptomChecker() {
       </Card>
 
       {hasSearched && (
-        <div className="space-y-4">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold">Potential Conditions</h2>
-            <Badge variant="outline" className="text-healthcare-blue-DEFAULT border-healthcare-blue-DEFAULT">
+        <div className="space-y-4 animate-fade-in">
+          <div className="flex items-center justify-between flex-wrap gap-2">
+            <h2 className="text-xl font-semibold flex items-center gap-2">
+              <FileText className="h-5 w-5 text-healthcare-blue-DEFAULT" />
+              Potential Conditions
+            </h2>
+            <Badge variant="outline" className="bg-healthcare-blue-light/10 text-healthcare-blue-DEFAULT border-healthcare-blue-DEFAULT">
               AI-Generated Analysis
             </Badge>
           </div>
 
           {isAnalyzing ? (
             <div className="flex flex-col items-center justify-center p-8 text-center">
-              <Loader2 className="h-8 w-8 animate-spin text-healthcare-blue-DEFAULT mb-4" />
-              <p className="text-muted-foreground">Analyzing your symptoms...</p>
+              <div className="relative">
+                <div className="absolute inset-0 rounded-full animate-ping bg-healthcare-blue-DEFAULT/20"></div>
+                <Loader2 className="h-8 w-8 animate-spin text-healthcare-blue-DEFAULT relative" />
+              </div>
+              <p className="text-muted-foreground mt-4">Analyzing your symptoms...</p>
             </div>
           ) : results.length > 0 ? (
-            <div className="grid gap-4">
+            <div className="grid gap-4 sm:gap-6">
               {results.map((condition, index) => (
-                <Card key={index} className="overflow-hidden">
-                  <div className="flex flex-col md:flex-row">
-                    <div className="bg-healthcare-blue-DEFAULT/10 p-4 flex items-center justify-center md:w-16">
+                <Card 
+                  key={index} 
+                  className={`overflow-hidden transition-all duration-300 hover:shadow-md ${index === 0 ? "border-2 border-healthcare-blue-DEFAULT/40" : ""}`}
+                >
+                  <div className="flex flex-col sm:flex-row">
+                    <div className={`bg-healthcare-blue-DEFAULT/10 p-4 flex items-center justify-center md:w-16 ${isMobile ? "py-3" : ""}`}>
                       <FileText className="h-6 w-6 text-healthcare-blue-DEFAULT" />
                     </div>
                     <div className="p-4 flex-1">
-                      <div className="flex flex-col md:flex-row md:items-center justify-between gap-2 mb-2">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-2">
                         <h3 className="font-semibold text-lg">{condition.name}</h3>
                         <Badge 
                           variant="outline" 
@@ -239,7 +275,7 @@ export default function SymptomChecker() {
           <div className="rounded-md bg-yellow-50 dark:bg-yellow-900/20 p-4 border border-yellow-200 dark:border-yellow-900/30">
             <div className="flex">
               <div className="flex-shrink-0">
-                <Thermometer className="h-5 w-5 text-yellow-400" aria-hidden="true" />
+                <AlertTriangle className="h-5 w-5 text-yellow-400" aria-hidden="true" />
               </div>
               <div className="ml-3">
                 <h3 className="text-sm font-medium text-yellow-800 dark:text-yellow-300">
