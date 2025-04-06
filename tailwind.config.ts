@@ -1,3 +1,4 @@
+
 import type { Config } from "tailwindcss";
 
 export default {
@@ -61,7 +62,25 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Healthcare specific colors
+				healthcare: {
+					blue: {
+						light: '#38BDF8',
+						DEFAULT: '#0EA5E9',
+						dark: '#0369A1'
+					},
+					teal: {
+						light: '#5EEAD4',
+						DEFAULT: '#14B8A6',
+						dark: '#0F766E'
+					},
+					red: {
+						light: '#FDA4AF',
+						DEFAULT: '#F43F5E',
+						dark: '#BE123C'
+					}
+				},
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +103,25 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'pulse-ring': {
+					'0%': { transform: 'scale(0.7)', opacity: '0' },
+					'50%': { opacity: '1' },
+					'100%': { transform: 'scale(1.2)', opacity: '0' }
+				},
+				'heartbeat': {
+					'0%': { transform: 'scale(1)' },
+					'14%': { transform: 'scale(1.3)' },
+					'28%': { transform: 'scale(1)' },
+					'42%': { transform: 'scale(1.3)' },
+					'70%': { transform: 'scale(1)' }
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'pulse-ring': 'pulse-ring 1.5s cubic-bezier(0.24, 0, 0.38, 1) infinite',
+				'heartbeat': 'heartbeat 1.5s infinite'
 			}
 		}
 	},
