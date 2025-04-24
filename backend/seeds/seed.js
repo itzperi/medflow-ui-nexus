@@ -5,7 +5,7 @@ const Patient = require('../models/Patient');
 const Staff = require('../models/Staff');
 const Revenue = require('../models/Revenue');
 
-// Load env vars
+
 dotenv.config();
 
 // Connect to DB
