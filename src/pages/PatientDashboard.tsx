@@ -83,7 +83,7 @@ const initialPatients = [
   },
   {
     id: 4,
-    name: "Female Unknown",
+    name: "Aradana",
     age: 28,
     gender: "Female",
     department: "Oncology",
