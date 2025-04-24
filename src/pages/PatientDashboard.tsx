@@ -53,7 +53,7 @@ import { Label } from "@/components/ui/label";
 const initialPatients = [
   {
     id: 1,
-    name: "John Doe",
+    name: "Advik",
     age: 45,
     gender: "Male",
     department: "Cardiology",
@@ -63,7 +63,7 @@ const initialPatients = [
   },
   {
     id: 2,
-    name: "Jane Smith",
+    name: "Aruna",
     age: 32,
     gender: "Female",
     department: "Neurology",
@@ -73,7 +73,7 @@ const initialPatients = [
   },
   {
     id: 3,
-    name: "Mike Johnson",
+    name: "Tarun",
     age: 51,
     gender: "Male",
     department: "Orthopedics",
@@ -83,7 +83,7 @@ const initialPatients = [
   },
   {
     id: 4,
-    name: "Sarah Williams",
+    name: "Female Unknown",
     age: 28,
     gender: "Female",
     department: "Oncology",
@@ -93,7 +93,7 @@ const initialPatients = [
   },
   {
     id: 5,
-    name: "Robert Brown",
+    name: "Sanjay",
     age: 63,
     gender: "Male",
     department: "Cardiology",
@@ -103,7 +103,7 @@ const initialPatients = [
   },
   {
     id: 6,
-    name: "Emily Davis",
+    name: "Sachein",
     age: 37,
     gender: "Female",
     department: "Pediatrics",
