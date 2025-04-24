@@ -47,7 +47,7 @@ import { Badge } from "@/components/ui/badge";
 const initialStaff = [
   {
     id: 1,
-    name: "Dr. James Wilson",
+    name: "Dr.Vijay",
     role: "Doctor",
     department: "Cardiology",
     shift: "Morning",
@@ -55,7 +55,7 @@ const initialStaff = [
   },
   {
     id: 2,
-    name: "Dr. Sarah Palmer",
+    name: "Dr.Dhanush",
     role: "Doctor",
     department: "Neurology",
     shift: "Evening",
@@ -63,7 +63,7 @@ const initialStaff = [
   },
   {
     id: 3,
-    name: "Mark Johnson",
+    name: "Remo",
     role: "Nurse",
     department: "Emergency",
     shift: "Night",
@@ -71,7 +71,7 @@ const initialStaff = [
   },
   {
     id: 4,
-    name: "Lisa Chen",
+    name: "Keerthy Suresh",
     role: "Nurse",
     department: "Pediatrics",
     shift: "Morning",
@@ -87,7 +87,7 @@ const initialStaff = [
   },
   {
     id: 6,
-    name: "Emily Davis",
+    name: "Karthick Subburaj",
     role: "Receptionist",
     department: "Administration",
     shift: "Morning",
@@ -95,7 +95,7 @@ const initialStaff = [
   },
   {
     id: 7,
-    name: "Dr. Michael Brown",
+    name: "Dr. Surya",
     role: "Doctor",
     department: "Orthopedics",
     shift: "Evening",
@@ -103,7 +103,7 @@ const initialStaff = [
   },
   {
     id: 8,
-    name: "Jennifer Smith",
+    name: "Jennifer ",
     role: "Nurse",
     department: "Cardiology",
     shift: "Night",
