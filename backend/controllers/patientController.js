@@ -184,4 +184,4 @@ exports.uploadMedicalReport = async (req, res) => {
       error: 'Server Error'
     });
   }
-}
+};
