@@ -1,5 +1,5 @@
 
-// Symptom checker controller
+
 exports.checkSymptoms = async (req, res) => {
   try {
     const { symptoms } = req.body;
