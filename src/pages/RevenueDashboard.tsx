@@ -149,7 +149,7 @@ export default function RevenueDashboard() {
                       <CartesianGrid strokeDasharray="3 3" />
                       <XAxis dataKey="name" />
                       <YAxis 
-                        tickFormatter={(value) => formatter.format(value).replace("$", "")} 
+                        tickFormatter={(value) => formatter.format(value).replace("₹", "")} 
                       />
                       <Tooltip 
                         formatter={(value: number) => formatter.format(value)} 
