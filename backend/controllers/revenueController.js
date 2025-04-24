@@ -1,4 +1,3 @@
-
 const Revenue = require('../models/Revenue');
 
 // Get all revenue entries
