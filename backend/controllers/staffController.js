@@ -1,4 +1,3 @@
-
 const Staff = require('../models/Staff');
 
 // Get all staff members
