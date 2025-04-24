@@ -25,12 +25,12 @@ import { Input } from "@/components/ui/input";
 
 // Mock patient data
 const patients = [
-  { id: 1, name: "", age: 45, patientId: "PT-001-2023" },
-  { id: 2, name: "", age: 32, patientId: "PT-002-2023" },
-  { id: 3, name: "", age: 51, patientId: "PT-003-2023" },
-  { id: 4, name: "", age: 28, patientId: "PT-004-2023" },
-  { id: 5, name: "", age: 63, patientId: "PT-005-2023" },
-  { id: 6, name: "", age: 37, patientId: "PT-006-2023" },
+  { id: 1, name: "Advik", age: 45, patientId: "PT-001-2023" },
+  { id: 2, name: "Aruna", age: 32, patientId: "PT-002-2023" },
+  { id: 3, name: "Tarun", age: 51, patientId: "PT-003-2023" },
+  { id: 4, name: "Aradana", age: 28, patientId: "PT-004-2023" },
+  { id: 5, name: "Sanjay", age: 63, patientId: "PT-005-2023" },
+  { id: 6, name: "Sachein", age: 37, patientId: "PT-006-2023" },
 ];
 
 export default function QRGenerator() {
