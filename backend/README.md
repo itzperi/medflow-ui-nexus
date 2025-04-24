@@ -1,4 +1,3 @@
-
 # Hospital Management System Backend
 
 This is the backend for the Hospital Management System.
